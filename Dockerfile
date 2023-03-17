@@ -7,7 +7,7 @@ RUN set -eo pipefail \
       && grep -n -e $'^[ \t]*location / {$' /etc/nginx/http.d/default.conf \
         | cut -d : -f 1 \
         | xargs -i expr 1 + {} \
-        | xargs -i sed -ie '{} s/return 404;$/autoindex on; add_header Content-Type text/html; \n#try_files \$uri \$uri.html \/index.html;/' /etc/nginx/http.d/default.conf \
+        | xargs -i sed -ie '{} s/return 404;$/autoindex on; add_header Content-Type text\/html; \n#try_files \$uri \$uri.html \/index.html;/' /etc/nginx/http.d/default.conf \
       && sed -ie '/# Everything is a 404/d' /etc/nginx/http.d/default.conf \
       && rm -f /etc/nginx/http.d/default.confe
 
